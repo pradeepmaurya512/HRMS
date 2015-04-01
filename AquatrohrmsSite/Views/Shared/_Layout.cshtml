@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width">
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <script src="~/Scripts/menu.js"></script>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+
+
+
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <img src="~/Images/A4logo.png" width="350px"  />
+                </div>
+               <div class="float-left">
+                    <div class="menu">         
+                        <ul id="menu">
+                            <li><a href="#">Home</a></li>
+                            <li>
+                                <a href="#">Maintenance</a>
+                                <ul>
+                                    <li><a href="#">Employee</a>
+                                        <ul>
+                                            <li>@Html.ActionLink("Add Employee", "EmployeeCreate", "Employee")</li>
+                                            <li>@Html.ActionLink("Employee List", "EmployeeDetails", "Employee")</li>                                           
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="#">Client</a>
+                                        <ul>
+                                            <li>@Html.ActionLink("Add Client", "AddClient","Home")</li>
+                                            <li>@Html.ActionLink("Client List", "_ClientList", "Home")</li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Project  </a>
+                                         <ul>
+                                            <li>@Html.ActionLink("Add Project", "EmployeeCreate", "Employee")</li>
+                                            <li>@Html.ActionLink("Project List", "EmployeeDetails", "Employee")</li>
+                                            
+                                        </ul>
+                                    </li>                               
+                                </ul>
+                            </li>
+                            <li><a href="#">Leave</a>
+                                 <ul>
+                                    <li><a href="#">Create Calendar</a></li>
+
+                                    <li><a href="#">Pending Leave Request </a>
+                                       
+                                    </li>
+                                    <li><a href="#">Total Leave   </a>                                        
+                                    </li>                               
+                                </ul>
+                            </li>
+                            <li><a href="#">Payslip</a>
+                                <ul>
+                                    <li><a href="#">Create Calendar</a></li>
+                                    <li><a href="#">Generate Salary Slip</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Performance</a>
+                                <ul>
+                                    <li><a href="#">Review Employee Goals</a></li>
+                                    <li><a href="#">Client Feedback</a></li>
+                                    <li><a href="#"> Employees Timesheet</a></li>
+                                </ul>
+                            </li>
+                             <li><a href="#"> Recruitment</a>
+                                <ul>
+                                    <li><a href="#">Job Applications</a></li>
+                                    <li><a href="#">New Vacancies</a></li>
+                                    
+                                </ul>
+                            </li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>     
+                    </div>
+              </div>
+            </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - AQuatro HRMS </p>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

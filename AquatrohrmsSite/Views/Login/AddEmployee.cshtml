@@ -1,0 +1,55 @@
+﻿@model AquatrohrmsSite.Models.tblLogin
+
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<h2>AddEmployee</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>tblLogin</legend>
+
+
+          <div class="editor-label">
+            @Html.LabelFor(model => model.tblEmployee.varFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tblEmployee.varFirstName)
+            @Html.ValidationMessageFor(model => model.tblEmployee.varFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.varLoginName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.varLoginName)
+            @Html.ValidationMessageFor(model => model.varLoginName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.varPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.varPassword)
+            @Html.ValidationMessageFor(model => model.varPassword)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

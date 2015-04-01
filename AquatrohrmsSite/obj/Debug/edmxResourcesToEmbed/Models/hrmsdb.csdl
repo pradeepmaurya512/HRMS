@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRMConnectionModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HRMFConnEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="HRMConnectionModel.C__MigrationHistory" />
+    <EntitySet Name="products" EntityType="HRMConnectionModel.product" />
+    <EntitySet Name="tblAccesses" EntityType="HRMConnectionModel.tblAccess" />
+    <EntitySet Name="tblClients" EntityType="HRMConnectionModel.tblClient" />
+    <EntitySet Name="tblEmployees" EntityType="HRMConnectionModel.tblEmployee" />
+    <EntitySet Name="tblHolidays" EntityType="HRMConnectionModel.tblHoliday" />
+    <EntitySet Name="tblLogins" EntityType="HRMConnectionModel.tblLogin" />
+    <EntitySet Name="tblMenus" EntityType="HRMConnectionModel.tblMenu" />
+    <EntitySet Name="tblProfiles" EntityType="HRMConnectionModel.tblProfile" />
+    <AssociationSet Name="FK_dbo_tblProfile_dbo_tblEmployee_Emp_ID" Association="HRMConnectionModel.FK_dbo_tblProfile_dbo_tblEmployee_Emp_ID">
+      <End Role="tblEmployee" EntitySet="tblEmployees" />
+      <End Role="tblProfile" EntitySet="tblProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pname" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="pPath" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Size" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblAccess">
+    <Key>
+      <PropertyRef Name="aId" />
+    </Key>
+    <Property Name="aId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectUser" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Access" Type="Binary" MaxLength="100" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblClient">
+    <Key>
+      <PropertyRef Name="Client_Id" />
+    </Key>
+    <Property Name="Client_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Client_EmailID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Client_Descriptiopn" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEmployee">
+    <Key>
+      <PropertyRef Name="Emp_ID" />
+    </Key>
+    <Property Name="Emp_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Middle_Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Last_Nmae" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Email_Id" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Confirm_Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModified" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblProfiles" Relationship="HRMConnectionModel.FK_dbo_tblProfile_dbo_tblEmployee_Emp_ID" FromRole="tblEmployee" ToRole="tblProfile" />
+  </EntityType>
+  <EntityType Name="tblHoliday">
+    <Key>
+      <PropertyRef Name="HolidayId" />
+    </Key>
+    <Property Name="HolidayId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="HolidayName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="HolidayDate" Type="DateTime" Precision="0" />
+    <Property Name="HalfDay_FullDay" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblLogin">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="uid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <Property Name="LastPasswordUpdate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblMenu">
+    <Key>
+      <PropertyRef Name="MId" />
+    </Key>
+    <Property Name="MId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="M_Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="M_Url" Type="String" MaxLength="5000" Unicode="false" FixedLength="false" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblProfile">
+    <Key>
+      <PropertyRef Name="ContactDetails_Id" />
+    </Key>
+    <Property Name="ContactDetails_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Address_Street_1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Address_Street_2" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="PinCode" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Home_Telephone" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Other_MailId" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Institute" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Specification" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Grade" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Emp_Photo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Emp_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblEmployee" Relationship="HRMConnectionModel.FK_dbo_tblProfile_dbo_tblEmployee_Emp_ID" FromRole="tblProfile" ToRole="tblEmployee" />
+  </EntityType>
+  <Association Name="FK_dbo_tblProfile_dbo_tblEmployee_Emp_ID">
+    <End Role="tblEmployee" Type="HRMConnectionModel.tblEmployee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblProfile" Type="HRMConnectionModel.tblProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmployee">
+        <PropertyRef Name="Emp_ID" />
+      </Principal>
+      <Dependent Role="tblProfile">
+        <PropertyRef Name="Emp_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
