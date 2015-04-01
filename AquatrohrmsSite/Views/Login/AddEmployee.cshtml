@@ -11,39 +11,77 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>tblLogin</legend>
+
+   
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.tblEmployee.varFirstName)</td>
+            <td>@Html.EditorFor(model => model.tblEmployee.varFirstName, new { @placeholder="First Name"})
+                @Html.ValidationMessageFor(model => model.tblEmployee.varFirstName)</td>
+
+            <td>@Html.EditorFor(model => model.tblEmployee.varMiddleName, new { @placeholder="Middle Name"})
+                @Html.ValidationMessageFor(model => model.tblEmployee.varMiddleName)</td>
+
+            <td>@Html.EditorFor(model => model.tblEmployee.varLastName, new { @placeholder="Last Name"})
+                @Html.ValidationMessageFor(model => model.tblEmployee.varLastName)</td>
+        </tr>
 
 
-          <div class="editor-label">
-            @Html.LabelFor(model => model.tblEmployee.varFirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.tblEmployee.varFirstName)
-            @Html.ValidationMessageFor(model => model.tblEmployee.varFirstName)
-        </div>
+        <tr>
+            <td>@Html.LabelFor(model => model.tblEmployee.intDepartmentID)</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.varLoginName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.varLoginName)
-            @Html.ValidationMessageFor(model => model.varLoginName)
-        </div>
+            <td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.varPassword)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.varPassword)
-            @Html.ValidationMessageFor(model => model.varPassword)
-        </div>
+                @*    @Html.DropDownListFor(model => model.tblEmployee.tblDepartment.varDepartmentName)*@
+
+                
+                @foreach (var person in ViewBag.Departments)
+                 {
+                     <li>@person("intDepartmentID")</li>
+                }
+               
+             @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
+        </tr>
 
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.tblEmployee.intDesignationId)</td>
+            <td>@Html.EditorFor(model => model.tblEmployee.intDesignationId)
+                @Html.ValidationMessageFor(model => model.tblEmployee.intDesignationId)</td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.varLoginName)</td>
+            <td>@Html.EditorFor(model => model.varLoginName)
+                @Html.ValidationMessageFor(model => model.varLoginName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.tblEmployee.varDOJ)</td>
+            <td>@Html.EditorFor(model => model.tblEmployee.varDOJ)
+                @Html.ValidationMessageFor(model => model.tblEmployee.varDOJ)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.varLoginName)</td>
+            <td>@Html.EditorFor(model => model.varLoginName)
+                @Html.ValidationMessageFor(model => model.varLoginName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.varPassword)</td>
+            <td>@Html.EditorFor(model => model.varPassword)
+                @Html.ValidationMessageFor(model => model.varPassword)</td>
+        </tr>
+    </table>
+
+        
+
+       
+
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+
 }
 
 <div>

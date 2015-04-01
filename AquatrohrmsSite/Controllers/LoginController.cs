@@ -11,17 +11,20 @@ namespace AquatrohrmsSite.Controllers
     {
         //
         // GET: /Login/
-
+        HRIMSConEntities db = new HRIMSConEntities();
         public ActionResult AddEmployee()
         {
+            var departments = db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName }).ToList();
+            ViewBag.Departments = departments;
             return View();
         }
 
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
         {
-            HRIMSConnEntities db = new HRIMSConnEntities();
 
+            tblEmployee objemp = new tblEmployee();
+            //objemp.intDepartmentID= new SelectList(,)
             db.tblLogins.Add(objtlogin);
          
             db.SaveChanges();
@@ -38,7 +41,7 @@ namespace AquatrohrmsSite.Controllers
         [HttpPost]
         public ActionResult AccountLogin(tblLogin objlogin)
         {
-            HRIMSConnEntities db = new HRIMSConnEntities();
+            
             if (IsValid(objlogin.varLoginName, objlogin.varPassword))
             {
                 FormsAuthentication.SetAuthCookie(objlogin.varLoginName, false);
@@ -60,7 +63,7 @@ namespace AquatrohrmsSite.Controllers
         {
             var crypto = new SimpleCrypto.PBKDF2();
             bool IsValid = false;
-            using (HRIMSConnEntities db = new HRIMSConnEntities())
+            using (  HRIMSConEntities db = new HRIMSConEntities())
             {
                 var user = db.tblLogins.Where(x => x.varLoginName == username).FirstOrDefault();
                 if (user != null)

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="HRIMSModelStoreContainer" CdmEntityContainer="HRIMSConnEntities">
+  <EntityContainerMapping StorageEntityContainer="HRIMSModelStoreContainer" CdmEntityContainer="HRIMSConEntities">
     <EntitySetMapping Name="tblAccesses">
       <EntityTypeMapping TypeName="HRIMSModel.tblAccess">
         <MappingFragment StoreEntitySet="tblAccess">
@@ -168,6 +168,7 @@
           <ScalarProperty Name="intPermCityID" ColumnName="intPermCityID" />
           <ScalarProperty Name="varPermPostalCode" ColumnName="varPermPostalCode" />
           <ScalarProperty Name="varAccessLevel" ColumnName="varAccessLevel" />
+          <ScalarProperty Name="varDOJ" ColumnName="varDOJ" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

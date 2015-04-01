@@ -24,7 +24,8 @@ namespace AquatrohrmsSite.Models
         public Nullable<System.DateTime> dtCreatedOn { get; set; }
         public Nullable<System.DateTime> dtUpdatedOn { get; set; }
         public Nullable<int> intCreatedBy { get; set; }
-        public Nullable<int> intUpdatedBy { get; set; }  
+        public Nullable<int> intUpdatedBy { get; set; }
+    
         public virtual tblEmployee tblEmployee { get; set; }
     }
 }

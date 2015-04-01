@@ -312,6 +312,7 @@
     <Property Name="intPermCityID" Type="int" />
     <Property Name="varPermPostalCode" Type="varchar" MaxLength="100" />
     <Property Name="varAccessLevel" Type="varchar" MaxLength="100" />
+    <Property Name="varDOJ" Type="datetime" />
   </EntityType>
   <EntityType Name="tblEmployeeGoals">
     <Key>

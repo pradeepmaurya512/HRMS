@@ -64,6 +64,7 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intPermCityID { get; set; }
         public string varPermPostalCode { get; set; }
         public string varAccessLevel { get; set; }
+        public Nullable<System.DateTime> varDOJ { get; set; }
     
         public virtual ICollection<tblAllowancesManagement> tblAllowancesManagements { get; set; }
         public virtual tblCity tblCity { get; set; }
@@ -87,7 +88,5 @@ namespace AquatrohrmsSite.Models
         public virtual ICollection<tblTraining> tblTrainings { get; set; }
         public virtual ICollection<tblUserLeaveManagement> tblUserLeaveManagements { get; set; }
         public virtual ICollection<tblWorkExperience> tblWorkExperiences { get; set; }
-
     }
-
 }

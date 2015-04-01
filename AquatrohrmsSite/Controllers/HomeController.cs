@@ -11,7 +11,7 @@ namespace AquatrohrmsSite.Controllers
 {
     public class HomeController : Controller
     {
-        HRIMSConnEntities db = new HRIMSConnEntities();
+          HRIMSConEntities db = new HRIMSConEntities(); 
 
         public ActionResult Index() {
 

@@ -13,10 +13,10 @@ namespace AquatrohrmsSite.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HRIMSConnEntities : DbContext
+    public partial class HRIMSConEntities : DbContext
     {
-        public HRIMSConnEntities()
-            : base("name=HRIMSConnEntities")
+        public HRIMSConEntities()
+            : base("name=HRIMSConEntities")
         {
         }
     

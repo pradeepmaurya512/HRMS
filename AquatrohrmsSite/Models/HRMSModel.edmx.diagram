@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35afec2465ee40be95e7b053a6c88af1" Name="Diagram1">
+      <Diagram DiagramId="8da19153fa8e4d04a38392dcd7684b5f" Name="Diagram1">
         <EntityTypeShape EntityType="HRIMSModel.tblAccess" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HRIMSModel.tblActivityDetail" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRIMSModel.tblActivityDetail" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblAllowance" Width="1.5" PointX="6" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblAllowancesManagement" Width="1.5" PointX="8.25" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblCity" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="HRIMSModel.tblCountry" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblDepartment" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblDesignation" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HRIMSModel.tblEmployee" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRIMSModel.tblEmployee" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblEmployeeGoal" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblEmployeeQualificationDetail" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblHolidayList" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -30,7 +30,7 @@
         <EntityTypeShape EntityType="HRIMSModel.tblRecruitmentType" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblState" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblStatu" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HRIMSModel.tblTimeSheet" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRIMSModel.tblTimeSheet" Width="1.5" PointX="10.5" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblTraining" Width="1.5" PointX="5.25" PointY="31.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblUserLeaveManagement" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HRIMSModel.tblUserRelationship" Width="1.5" PointX="0.75" PointY="27.875" IsExpanded="true" />

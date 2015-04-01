@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HRIMSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="HRIMSConnEntities" p1:LazyLoadingEnabled="true">
+  <EntityContainer Name="HRIMSConEntities" p1:LazyLoadingEnabled="true">
     <EntitySet Name="tblAccesses" EntityType="HRIMSModel.tblAccess" />
     <EntitySet Name="tblActivityDetails" EntityType="HRIMSModel.tblActivityDetail" />
     <EntitySet Name="tblAllowances" EntityType="HRIMSModel.tblAllowance" />
@@ -324,6 +324,7 @@
     <Property Name="intPermCityID" Type="Int32" />
     <Property Name="varPermPostalCode" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="varAccessLevel" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="varDOJ" Type="DateTime" Precision="3" />
     <NavigationProperty Name="tblAllowancesManagements" Relationship="HRIMSModel.FK__tblAllowa__intEm__3429BB53" FromRole="tblEmployee" ToRole="tblAllowancesManagement" />
     <NavigationProperty Name="tblCity" Relationship="HRIMSModel.FK__tblEmploy__intCu__55BFB948" FromRole="tblEmployee" ToRole="tblCity" />
     <NavigationProperty Name="tblCity1" Relationship="HRIMSModel.FK__tblEmploy__intPe__5B78929E" FromRole="tblEmployee" ToRole="tblCity" />
