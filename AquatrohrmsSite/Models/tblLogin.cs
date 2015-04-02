@@ -11,15 +11,28 @@ namespace AquatrohrmsSite.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class tblLogin
     {
         public int intLoginId { get; set; }
         public string varUserName { get; set; }
+
+        [DataType(DataType.Password)]
+        [DisplayName(" Password")]
         public string varPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Passwords must match")]
+        [Required(ErrorMessage = "Confirm password is required")]
+        [DisplayName("Confirm Password")]
+        public string varConfirmPassword { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
+
+         [DisplayName("Email ID")]
         public string varLoginName { get; set; }
         public Nullable<System.DateTime> dtCreatedOn { get; set; }
         public Nullable<System.DateTime> dtUpdatedOn { get; set; }

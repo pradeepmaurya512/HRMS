@@ -11,11 +11,13 @@ namespace AquatrohrmsSite.Controllers
     {
         //
         // GET: /Login/
+
         HRIMSConEntities db = new HRIMSConEntities();
         public ActionResult AddEmployee()
         {
-            var departments = db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName }).ToList();
-            ViewBag.Departments = departments;
+             //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
+            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
             return View();
         }
 

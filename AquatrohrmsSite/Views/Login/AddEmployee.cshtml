@@ -11,16 +11,16 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <table> getlatest test
+    <table>
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.varFirstName)</td>
-            <td>@Html.EditorFor(model => model.tblEmployee.varFirstName, new { @placeholder="First Name"})
+            <td>@Html.TextBoxFor(model => model.tblEmployee.varFirstName, new {@Placeholder="First Name"})
                 @Html.ValidationMessageFor(model => model.tblEmployee.varFirstName)</td>
 
-            <td>@Html.EditorFor(model => model.tblEmployee.varMiddleName, new { @placeholder="Middle Name"})
+            <td>@Html.TextBoxFor(model => model.tblEmployee.varMiddleName, new { @Placeholder="Middle Name"})
                 @Html.ValidationMessageFor(model => model.tblEmployee.varMiddleName)</td>
 
-            <td>@Html.EditorFor(model => model.tblEmployee.varLastName, new { @placeholder="Last Name"})
+            <td>@Html.TextBoxFor(model => model.tblEmployee.varLastName, new { @Placeholder="Last Name"})
                 @Html.ValidationMessageFor(model => model.tblEmployee.varLastName)</td>
         </tr>
 
@@ -31,12 +31,13 @@
             <td>
 
                 @*    @Html.DropDownListFor(model => model.tblEmployee.tblDepartment.varDepartmentName)*@
-
-                
-                @foreach (var person in ViewBag.Departments)
+  
+@*                @foreach (var person in ViewBag.Departments)
                  {
-                     <li>@person("intDepartmentID")</li>
-                }
+                     
+                 }*@
+
+                @Html.DropDownList("departs","select Department")
                
              @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
         </tr>
@@ -45,15 +46,10 @@
 
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.intDesignationId)</td>
-            <td>@Html.EditorFor(model => model.tblEmployee.intDesignationId)
+            <td> @Html.DropDownList("designation","select Designation")
                 @Html.ValidationMessageFor(model => model.tblEmployee.intDesignationId)</td>
         </tr>
-
-        <tr>
-            <td>@Html.LabelFor(model => model.varLoginName)</td>
-            <td>@Html.EditorFor(model => model.varLoginName)
-                @Html.ValidationMessageFor(model => model.varLoginName)</td>
-        </tr>
+   
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.varDOJ)</td>
             <td>@Html.EditorFor(model => model.tblEmployee.varDOJ)
@@ -61,13 +57,18 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.varLoginName)</td>
-            <td>@Html.EditorFor(model => model.varLoginName)
+            <td>@Html.TextBoxFor(model => model.varLoginName, new { @Placeholder="pp@gmail.com"})
                 @Html.ValidationMessageFor(model => model.varLoginName)</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.varPassword)</td>
             <td>@Html.EditorFor(model => model.varPassword)
                 @Html.ValidationMessageFor(model => model.varPassword)</td>
+        </tr>
+         <tr>
+            <td>@Html.LabelFor(model => model.varConfirmPassword)</td>
+            <td>@Html.EditorFor(model => model.varConfirmPassword)
+                @Html.ValidationMessageFor(model => model.varConfirmPassword)</td>
         </tr>
     </table>
 
