@@ -16,8 +16,8 @@ namespace AquatrohrmsSite.Controllers
         public ActionResult AddEmployee()
         {
              //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
-            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
-            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
+            ViewBag.departs = new SelectListItem(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+            ViewBag.designation = new SelectListItem(db.tblDesignations, "intDesignationID", "varDesignationName");
             return View();
         }
 
@@ -28,7 +28,7 @@ namespace AquatrohrmsSite.Controllers
             tblEmployee objemp = new tblEmployee();
             //objemp.intDepartmentID= new SelectList(,)
             db.tblLogins.Add(objtlogin);
-         
+            db.tblEmployees.Add(objemp);
             db.SaveChanges();
             return View();
         }

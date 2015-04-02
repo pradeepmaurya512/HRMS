@@ -23,11 +23,11 @@ namespace AquatrohrmsSite.Models
         [DisplayName(" Password")]
         public string varPassword { get; set; }
 
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Passwords must match")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        [DisplayName("Confirm Password")]
-        public string varConfirmPassword { get; set; }
+        //[DataType(DataType.Password)]
+        //[Compare("Password", ErrorMessage = "Passwords must match")]
+        //[Required(ErrorMessage = "Confirm password is required")]
+        //[DisplayName("Confirm Password")]
+        //public string varConfirmPassword { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }

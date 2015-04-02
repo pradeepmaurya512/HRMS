@@ -37,7 +37,7 @@
                      
                  }*@
 
-                @Html.DropDownList("departs","select Department")
+                @Html.DropDownList("departs",(IEnumerable<SelectListItem>)ViewBag.departs,"select Department")
                
              @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
         </tr>
@@ -65,11 +65,11 @@
             <td>@Html.EditorFor(model => model.varPassword)
                 @Html.ValidationMessageFor(model => model.varPassword)</td>
         </tr>
-         <tr>
+        @* <tr>
             <td>@Html.LabelFor(model => model.varConfirmPassword)</td>
             <td>@Html.EditorFor(model => model.varConfirmPassword)
                 @Html.ValidationMessageFor(model => model.varConfirmPassword)</td>
-        </tr>
+        </tr>*@
     </table>
 
         
