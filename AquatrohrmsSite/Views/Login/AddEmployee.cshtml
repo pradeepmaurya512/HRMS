@@ -30,15 +30,8 @@
 
             <td>
 
-                @*    @Html.DropDownListFor(model => model.tblEmployee.tblDepartment.varDepartmentName)*@
-  
-@*                @foreach (var person in ViewBag.Departments)
-                 {
-                     
-                 }*@
+                @Html.DropDownList("departs","select Department")
 
-                @Html.DropDownList("departs",(IEnumerable<SelectListItem>)ViewBag.departs,"select Department")
-               
              @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
         </tr>
 
@@ -70,12 +63,32 @@
             <td>@Html.EditorFor(model => model.varConfirmPassword)
                 @Html.ValidationMessageFor(model => model.varConfirmPassword)</td>
         </tr>*@
+
+        <tr>
+            
+        </tr>
+
+         <tr>
+           @* <td>@Html.LabelFor(model => model.tblEmployee.intEmployeeID)</td>
+            <td> @Html.DropDownList("reportingto","select Reporting Person")
+                @Html.ValidationMessageFor(model => model.tblEmployee.intEmployeeID)</td>*@
+
+
+           @*  <td>@Html.LabelFor(model => model)</td>
+             <td>@Html.DropDownList("Acesscontrol","select Acess")
+                @Html.ValidationMessageFor(model => model)</td>*@
+        </tr>
+
     </table>
-
-        
-
-       
-
+    
+    <div class="form-control">
+        <h4>Status:-</h4>
+    <input type="radio" name="Active" value="Active" > Active
+        <input type="radio" title="Disable"  /> Disable
+    </div>
+    
+  
+    
 
     <p>
         <input type="submit" value="Create" />
