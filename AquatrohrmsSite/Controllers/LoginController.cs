@@ -12,15 +12,11 @@ namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-        //
-        // GET: /Login/
-
+    
         HRIMSConEntities db = new HRIMSConEntities();
         
         public ActionResult AddEmployee()
         {
-
-
 
              //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
             ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
@@ -95,12 +91,12 @@ namespace AquatrohrmsSite.Controllers
         }
 
 
-        public ActionResult SendMail(string Subject, string Body)
-        {
-            Email oMail = new Email();
-            oMail.SendMail("Email", "xxxxx@xxxxxx.com", new String[] { Subject, Body });
+        //public ActionResult SendMail(string Subject, string Body)
+        //{
+        //    Email oMail = new Email();
+        //    oMail.SendMail("Email", "xxxxx@xxxxxx.com", new String[] { Subject, Body });
 
-            return Content("Success");
-        }
+        //    return Content("Success");
+        //}
     }
 }

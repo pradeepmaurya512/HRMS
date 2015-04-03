@@ -162,3 +162,10 @@ D:\HRIMS\HRMS\AquatrohrmsSite\bin\zh-Hant\System.Spatial.resources.dll
 D:\HRIMS\HRMS\AquatrohrmsSite\obj\Debug\AquatrohrmsSite.csprojResolveAssemblyReference.cache
 D:\HRIMS\HRMS\AquatrohrmsSite\obj\Debug\AquatrohrmsSite.dll
 D:\HRIMS\HRMS\AquatrohrmsSite\obj\Debug\AquatrohrmsSite.pdb
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\AquatrohrmsSite.dll.config
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Net.Http.Formatting.dll
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Web.Http.dll
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Web.Http.WebHost.dll
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Net.Http.Formatting.xml
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Web.Http.xml
+D:\HRIMS\HRMS\AquatrohrmsSite\bin\System.Web.Http.WebHost.xml
