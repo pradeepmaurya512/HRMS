@@ -13,6 +13,10 @@ namespace AquatrohrmsSite.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.Web.Mvc;
     
     public partial class tblLogin
     {
@@ -23,11 +27,17 @@ namespace AquatrohrmsSite.Models
         [DisplayName(" Password")]
         public string varPassword { get; set; }
 
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Passwords must match")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        [DisplayName("Confirm Password")]
-        public string varConfirmPassword { get; set; }
+
+        [NotMapped]
+        public SelectList intDesignationId { get; set; }
+        [NotMapped]
+        public SelectList intDepartmentID { get; set; }  
+
+        //[DataType(DataType.Password)]
+        //[Compare("Password", ErrorMessage = "Passwords must match")]
+        //[Required(ErrorMessage = "Confirm password is required")]
+        //[DisplayName("Confirm Password")]
+        //public string varConfirmPassword { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
@@ -41,4 +51,16 @@ namespace AquatrohrmsSite.Models
     
         public virtual tblEmployee tblEmployee { get; set; }
     }
+
+
+    //public class MobileContext
+    //{
+    //    public IEnumerable<tblDepartment> GetMobileList()
+    //    {
+    //        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HRIMSConEntities"].ToString());
+    //        string query = "SELECT [intDepartmentID],[varDepartmentName]FROM [tblDepartment]";
+    //        var result = con.Query<tblDepartment>(query);
+    //        return result;
+    //    }
+    //}
 }

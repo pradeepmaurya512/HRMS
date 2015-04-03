@@ -5,19 +5,25 @@ using System.Web;
 using System.Web.Mvc;
 using AquatrohrmsSite.Models;
 using System.Web.Security;
+using System.Data.SqlClient;
+using System.Configuration;
+using AquatrohrmsSite.Models;
 namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-        //
-        // GET: /Login/
-
+    
         HRIMSConEntities db = new HRIMSConEntities();
+        
         public ActionResult AddEmployee()
         {
+
              //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
             ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
             ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
+            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName");
+            ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
+
             return View();
         }
 
@@ -28,7 +34,7 @@ namespace AquatrohrmsSite.Controllers
             tblEmployee objemp = new tblEmployee();
             //objemp.intDepartmentID= new SelectList(,)
             db.tblLogins.Add(objtlogin);
-         
+            db.tblEmployees.Add(objemp);
             db.SaveChanges();
             return View();
         }
@@ -78,5 +84,19 @@ namespace AquatrohrmsSite.Controllers
             }
             return IsValid;
         }
+
+        public ActionResult Email()
+        {
+            return View();
+        }
+
+
+        //public ActionResult SendMail(string Subject, string Body)
+        //{
+        //    Email oMail = new Email();
+        //    oMail.SendMail("Email", "xxxxx@xxxxxx.com", new String[] { Subject, Body });
+
+        //    return Content("Success");
+        //}
     }
 }
