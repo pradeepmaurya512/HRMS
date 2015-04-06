@@ -87,6 +87,14 @@ namespace AquatrohrmsSite.Controllers
             return IsValid;
         }
 
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+
+
         public ActionResult Email()
         {
             return View();
