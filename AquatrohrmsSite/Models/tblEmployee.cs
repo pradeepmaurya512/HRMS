@@ -32,7 +32,7 @@ namespace AquatrohrmsSite.Models
     
         public int intEmployeeID { get; set; }
 
-        [DisplayName("Employee Full Name")]
+        //[DisplayName("Employee Full Name")]
         public string varFirstName { get; set; }
         public string varLastName { get; set; }
         public string varMiddleName { get; set; }

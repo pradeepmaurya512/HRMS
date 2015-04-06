@@ -5,13 +5,16 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<h2>AddEmployee</h2>
+<h2 style="width: 500px; font-family: 'Book Antiqua'; font-size: 23px"><b>Create Employee </b></h2>
+<script type="text/javascript">
+   
+</script>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <table>
+    @*<table>
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.varFirstName)</td>
             <td>@Html.TextBoxFor(model => model.tblEmployee.varFirstName, new {@Placeholder="First Name"})
@@ -23,26 +26,17 @@
             <td>@Html.TextBoxFor(model => model.tblEmployee.varLastName, new { @Placeholder="Last Name"})
                 @Html.ValidationMessageFor(model => model.tblEmployee.varLastName)</td>
         </tr>
-
-
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.intDepartmentID)</td>
-
             <td>
-
                 @Html.DropDownList("departs","select Department")
-
-             @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
+                @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)</td>
         </tr>
-
-
-
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.intDesignationId)</td>
             <td> @Html.DropDownList("designation","select Designation")
                 @Html.ValidationMessageFor(model => model.tblEmployee.intDesignationId)</td>
-        </tr>
-   
+        </tr>   
         <tr>
             <td>@Html.LabelFor(model => model.tblEmployee.varDOJ)</td>
             <td>@Html.EditorFor(model => model.tblEmployee.varDOJ)
@@ -63,42 +57,120 @@
             <td>@Html.EditorFor(model => model.varConfirmPassword)
                 @Html.ValidationMessageFor(model => model.varConfirmPassword)</td>
         </tr>*@
-
-        <tr>
-            
-        </tr>
-
-         <tr>
+        //<tr>            
+        //</tr>
+         //<tr>
            @* <td>@Html.LabelFor(model => model.tblEmployee.intEmployeeID)</td>
             <td> @Html.DropDownList("reportingto","select Reporting Person")
                 @Html.ValidationMessageFor(model => model.tblEmployee.intEmployeeID)</td>*@
-
-
            @*  <td>@Html.LabelFor(model => model)</td>
              <td>@Html.DropDownList("Acesscontrol","select Acess")
                 @Html.ValidationMessageFor(model => model)</td>*@
-        </tr>
-
-    </table>
-    
+       // </tr>
+    @*</table>    
     <div class="form-control">
         <h4>Status:-</h4>
     <input type="radio" name="Active" value="Active" > Active
         <input type="radio" title="Disable"  /> Disable
-    </div>
-    
-  
-    
-
+    </div>          
     <p>
         <input type="submit" value="Create" />
-    </p>
+    </p>*@
+    
+<div style="height:15px"></div>
+ <fieldset style="border:solid 1px black;font-family:'Book Antiqua';font-size:13px">    
+    <table style="margin-left:15px">
+        <div style="height:10px"></div>
+        <tr>
+            <td style="width:100px"> Employee Name</td>            
+            <td>
+                @Html.TextBoxFor(model => model.tblEmployee.varFirstName, new {style="width: 200px; font-family: 'Book Antiqua'; font-size: 13px",@placeholder="First Name",id="txtFirstName" })
+                @Html.ValidationMessageFor(model => model.tblEmployee.varFirstName)
+           </td>            
+            <td>
+               @Html.TextBoxFor(model => model.tblEmployee.varMiddleName, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "Middle Name", id = "txtMiddleName" })
+               @Html.ValidationMessageFor(model => model.tblEmployee.varMiddleName)
+        </td>
+         <td>
+              @Html.TextBoxFor(model => model.tblEmployee.varLastName, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "Last Name", id = "txtLastName" })
+              @Html.ValidationMessageFor(model => model.tblEmployee.varLastName)
+        </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Email ID</td>
+            <td>
+                @Html.TextBoxFor(model => model.tblEmployee.varOfficeEmailAdd, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "abc@a4technology.com", id = "txtLoginName" })
+                @Html.ValidationMessageFor(model => model.varLoginName)
+            </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Department</td>           
+            <td>                        
+                @Html.DropDownList("departs", null ,"--Select--", new { style = "width: 213px; height: 25px; font-family: 'Book Antiqua'; font-size: 13px",id="ddlDepartment" })
+                @Html.ValidationMessageFor(model => model.tblEmployee.intDepartmentID)
+            </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Designation</td>
+            <td>
+                @Html.DropDownList("designation", null, "--Select--", new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlDesignation" })
+                @Html.ValidationMessageFor(model => model.tblEmployee.intDesignationId)
+            </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Date Of Joining</td>
+            @*<td><input type="text" id="txtDateOfJoin" style="width: 200px; font-family: 'Book Antiqua'; font-size: 13px" placeholder="" /></td>*@
+            <td>
+               @Html.TextBoxFor(model => model.tblEmployee.varDOJ, new {  style = "width: 213px; height: 25px; font-family: 'Book Antiqua'; font-size: 13px", type = "date" })
+               @Html.ValidationMessageFor(model => model.tblEmployee.varDOJ)
+        </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Login Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.varLoginName, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "abc@a4technology.com",id="txtLoginName" })
+                @Html.ValidationMessageFor(model => model.varLoginName)
+        </td>
+        </tr>
+        <tr>
+            <td style="width:100px">Password</td>
+            <td>
+                @Html.TextBoxFor(model => model.varPassword, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "Password",id="txtPassword" })
+                @Html.ValidationMessageFor(model => model.varPassword)
+        </td>
+        </tr>
+        <tr>
+            <td style="width:150px">Confirm Password</td>
+            <td><input type="text" id="txtCrfmPassword" style="width: 200px; font-family: 'Book Antiqua'; font-size: 13px" placeholder="Confirm Password" /></td>            
+        </tr>
+        <tr>
+            <td style="width:150px">Access Levels</td>
+            <td>@Html.DropDownList("accessID", null, "--Select--", new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlAccess" })</td>
+        </tr>
+        <tr>
+            <td style="width:150px">Reporting Head</td>
+            <td>@Html.DropDownList("employeelist", null, "--Select--", new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlReportingHead" })</td>
+        </tr>
+        <tr>
+            <td style="width:150px">Status</td>
+            <td>
+               @Html.RadioButton("rgp", "1", isChecked: true)@Html.Label("Active", new { style = "width: 20px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px" })
+               @Html.RadioButton("rgp", "0", isChecked: false)@Html.Label("InActive", new { style = "width: 20px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px" })
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create" style="font-family: 'Book Antiqua'; font-size: 13px;width:100px" /> </td>                        
+            <td><button type="reset" value="Reset" style="font-family: 'Book Antiqua'; font-size: 13px;width:100px">Reset</button></td>
+        </tr>
+    </table>
+     <div style="height:20px"></div>
+ </fieldset>
 
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

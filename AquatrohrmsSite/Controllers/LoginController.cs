@@ -23,6 +23,8 @@ namespace AquatrohrmsSite.Controllers
             ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
             ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName");
             ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
+            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName");
+            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
 
             return View();
         }
