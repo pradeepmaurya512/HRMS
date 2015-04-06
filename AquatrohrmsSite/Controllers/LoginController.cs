@@ -35,10 +35,15 @@ namespace AquatrohrmsSite.Controllers
 
             tblEmployee objemp = new tblEmployee();
             //objemp.intDepartmentID= new SelectList(,)
-            db.tblLogins.Add(objtlogin);
-            db.tblEmployees.Add(objemp);
-            db.SaveChanges();
-            return View();
+            if (ModelState.IsValid)
+            {
+                db.tblLogins.Add(objtlogin);
+                db.tblEmployees.Add(objemp);
+                db.SaveChanges();
+            }
+
+            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
+            return View(objemp);
         }
 
         [HttpGet]
