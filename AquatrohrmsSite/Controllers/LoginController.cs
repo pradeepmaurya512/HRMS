@@ -16,29 +16,86 @@ namespace AquatrohrmsSite.Controllers
         HRIMSConEntities db = new HRIMSConEntities();
         
         public ActionResult AddEmployee()
-        {
-
+        {            
              //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
-            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
-            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
-            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName");
-            ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
-            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName");
-            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
+            //ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+           
+            //----------------------- Department Binding entity -----------------------------//
+            List<tblDepartment> deptList = (from data in db.tblDepartments
+                                            select data).ToList();
 
-            return View();
-        }
+            tblDepartment objDept = new tblDepartment();
+
+            objDept.varDepartmentName = "-- Select --";
+            objDept.intDepartmentID = 0;
+
+            deptList.Insert(0, objDept);
+            SelectList objModelDept = new SelectList(deptList, "intDepartmentID", "varDepartmentName", 0);
+            tblLogin objLogin = new tblLogin();
+            objLogin.DepartmentModel = objModelDept;
+
+            //---------------------- End Department Binding ---------------------------------------//
+
+            //---------------------- Designation Binding entity ----------------------------//
+
+            List<tblDesignation> desigList = (from data in db.tblDesignations
+                                              select data).ToList();
+
+            tblDesignation objDesignation = new tblDesignation();
+
+            objDesignation.varDesignationName = "-- Select --";
+            objDesignation.intDesignationID = 0;
+
+
+            desigList.Insert(0, objDesignation);
+
+            SelectList objModelDesignation = new SelectList(desigList, "intDesignationID", "varDesignationName", 0);
+
+            objLogin.DesignationModel = objModelDesignation;
+
+            //----------------------- End Designation Binding ---------------------------------------//
+
+            //---------------------- Employee Binding entity ----------------------------//
+
+            List<tblEmployee> empList = (from data in db.tblEmployees
+                                         select data).ToList();
+
+            tblEmployee objemp = new tblEmployee();
+            objemp.varFirstName = "-- Select --";
+            objemp.intEmployeeID = 0 ;
+
+            empList.Insert(0, objemp);
+
+            SelectList objEmployeeModel = new SelectList(empList, "intEmployeeID", "varFirstName", 0);
+
+            objLogin.EmployeeModel = objEmployeeModel;
+
+
+            //---------------------- End Employee Binding ------------------------------------//
+
+            //---------------------- Access Binding entity ----------------------------//
+
+            List<tblAccess> accessList = (from data in db.tblAccesses
+                                          select data).ToList();
+            SelectList objAccessList = new SelectList(accessList, "intAccessID", "varAccessName", 0);
+            objLogin.AccessList = objAccessList;
+
+            //---------------------- End Access Binding ------------------------------------//
+         
+            return View(objLogin);  
+
+            }
 
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
         {
 
-            tblEmployee objemp = new tblEmployee();
-            //objemp.intDepartmentID= new SelectList(,)
+            //tblEmployee objemp = new tblEmployee();
+           // objemp.intDepartmentID= new SelectList(,)
             db.tblLogins.Add(objtlogin);
-            db.tblEmployees.Add(objemp);
+           //db.tblEmployees.Add(objemp);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("AddEmployee");
         }
 
         [HttpGet]

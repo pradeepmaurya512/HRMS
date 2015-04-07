@@ -50,6 +50,11 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intUpdatedBy { get; set; }
     
         public virtual tblEmployee tblEmployee { get; set; }
+        public IList<SelectListItem> Access { get; set; }
+        public SelectList DepartmentModel { get; set; }
+        public SelectList DesignationModel { get; set; }
+        public SelectList EmployeeModel { get; set; }
+        public SelectList AccessList { get; set; }
     }
 
 
