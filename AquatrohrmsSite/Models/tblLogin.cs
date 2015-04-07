@@ -12,8 +12,9 @@ namespace AquatrohrmsSite.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
+
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Web.Mvc;
@@ -21,29 +22,33 @@ namespace AquatrohrmsSite.Models
     public partial class tblLogin
     {
         public int intLoginId { get; set; }
+
         public string varUserName { get; set; }
 
         [DataType(DataType.Password)]
         [DisplayName(" Password")]
         public string varPassword { get; set; }
 
+        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("varPassword", ErrorMessage = "Passwords must match")]
+        [Required(ErrorMessage = "Confirm password is required")]
+        [DisplayName("Confirm Password")]
+        public string varConfirmPassword { get; set; }
 
         [NotMapped]
         public SelectList intDesignationId { get; set; }
         [NotMapped]
-        public SelectList intDepartmentID { get; set; }  
+        public SelectList intDepartmentID { get; set; }       
 
-        //[DataType(DataType.Password)]
-        //[Compare("Password", ErrorMessage = "Passwords must match")]
-        //[Required(ErrorMessage = "Confirm password is required")]
-        //[DisplayName("Confirm Password")]
-        //public string varConfirmPassword { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
 
          [DisplayName("Email ID")]
+         [Remote("CheckForDuplication","Login")]
         public string varLoginName { get; set; }
+
+
         public Nullable<System.DateTime> dtCreatedOn { get; set; }
         public Nullable<System.DateTime> dtUpdatedOn { get; set; }
         public Nullable<int> intCreatedBy { get; set; }
@@ -58,14 +63,5 @@ namespace AquatrohrmsSite.Models
     }
 
 
-    //public class MobileContext
-    //{
-    //    public IEnumerable<tblDepartment> GetMobileList()
-    //    {
-    //        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HRIMSConEntities"].ToString());
-    //        string query = "SELECT [intDepartmentID],[varDepartmentName]FROM [tblDepartment]";
-    //        var result = con.Query<tblDepartment>(query);
-    //        return result;
-    //    }
-    //}
+       
 }
