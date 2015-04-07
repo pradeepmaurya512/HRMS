@@ -43,8 +43,31 @@ namespace AquatrohrmsSite.Controllers
             }
 
             ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
-            return View(objemp);
+            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName", objemp.intDesignationId);
+            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName",objemp.intReportingHead); 
+            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName",objemp.varAccessLevel);
+            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
+            return View(objtlogin);
         }
+
+        public JsonResult CheckForDuplication(string EmailId)
+        {
+            var data = db.tblLogins.Where(p => p.varLoginName.Equals(EmailId, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+
+            if (data != null)
+            {
+                return Json("Sorry, this name already exists", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
+
+
 
         [HttpGet]
         public ActionResult AccountLogin()
