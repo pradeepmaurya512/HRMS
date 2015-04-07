@@ -8,23 +8,26 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using System.Configuration;
 using AquatrohrmsSite.Models;
+using System.Net.Mail;
+using System.Net;
 namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-    
+
         HRIMSConEntities db = new HRIMSConEntities();
-        
+        [HttpGet]
         public ActionResult AddEmployee()
         {
+            //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
 
-             //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
             ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
             ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
-            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName");
-            ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
-            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName");
-            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
+
+            //ViewBag.reportingto = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
+            //ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
+            //ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName");
+            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
 
             return View();
         }
@@ -32,7 +35,6 @@ namespace AquatrohrmsSite.Controllers
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
         {
-
             tblEmployee objemp = new tblEmployee();
             //objemp.intDepartmentID= new SelectList(,)
             if (ModelState.IsValid)
@@ -44,9 +46,9 @@ namespace AquatrohrmsSite.Controllers
 
             ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
             ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName", objemp.intDesignationId);
-            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName",objemp.intReportingHead); 
-            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName",objemp.varAccessLevel);
-            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
+            //ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName", objemp.intReportingHead);
+            //ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName", objemp.varAccessLevel);
+            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
             return View(objtlogin);
         }
 
@@ -64,22 +66,16 @@ namespace AquatrohrmsSite.Controllers
             }
         }
 
-
-
-
-
-
         [HttpGet]
         public ActionResult AccountLogin()
         {
             return View();
         }
 
-
         [HttpPost]
         public ActionResult AccountLogin(tblLogin objlogin)
         {
-            
+
             if (IsValid(objlogin.varLoginName, objlogin.varPassword))
             {
                 FormsAuthentication.SetAuthCookie(objlogin.varLoginName, false);
@@ -92,16 +88,14 @@ namespace AquatrohrmsSite.Controllers
                 //ModelState.AddModelError("", "Login details are wrong.");
             }
             return View(objlogin);
-            
+
         }
-
-
 
         private bool IsValid(string username, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
             bool IsValid = false;
-            using (  HRIMSConEntities db = new HRIMSConEntities())
+            using (HRIMSConEntities db = new HRIMSConEntities())
             {
                 var user = db.tblLogins.Where(x => x.varLoginName == username).FirstOrDefault();
                 if (user != null)
@@ -115,26 +109,20 @@ namespace AquatrohrmsSite.Controllers
             return IsValid;
         }
 
-
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-
-
-        public ActionResult Email()
+        public ActionResult ForgotPassword()
         {
+
             return View();
         }
 
 
-        //public ActionResult SendMail(string Subject, string Body)
-        //{
-        //    Email oMail = new Email();
-        //    oMail.SendMail("Email", "xxxxx@xxxxxx.com", new String[] { Subject, Body });
-
-        //    return Content("Success");
-        //}
     }
-}
+
+   }
+
+      

@@ -447,6 +447,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Login\Email.cshtml" />
     <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

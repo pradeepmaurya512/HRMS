@@ -40,6 +40,7 @@ namespace AquatrohrmsSite.Models
 
         [DisplayName("Designation")]
         public Nullable<int> intDesignationId { get; set; }
+
         public string varCurrAddressLine1 { get; set; }
         public string varCurrAddressLine2 { get; set; }
         public Nullable<int> intCurrCountryID { get; set; }
