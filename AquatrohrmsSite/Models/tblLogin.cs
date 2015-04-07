@@ -29,10 +29,6 @@ namespace AquatrohrmsSite.Models
         [DisplayName(" Password")]
         public string varPassword { get; set; }
 
-        [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("varPassword", ErrorMessage = "Passwords must match")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        [DisplayName("Confirm Password")]
         public string varConfirmPassword { get; set; }
 
         [NotMapped]
@@ -44,10 +40,9 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
 
-         [DisplayName("Email ID")]
-         [Remote("CheckForDuplication","Login")]
+        [DisplayName("Email ID")]
+        [Remote("CheckForDuplication","Login")]
         public string varLoginName { get; set; }
-
 
         public Nullable<System.DateTime> dtCreatedOn { get; set; }
         public Nullable<System.DateTime> dtUpdatedOn { get; set; }
@@ -55,13 +50,11 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intUpdatedBy { get; set; }
     
         public virtual tblEmployee tblEmployee { get; set; }
+
         public IList<SelectListItem> Access { get; set; }
         public SelectList DepartmentModel { get; set; }
         public SelectList DesignationModel { get; set; }
         public SelectList EmployeeModel { get; set; }
         public SelectList AccessList { get; set; }
-    }
-
-
-       
+    }       
 }
