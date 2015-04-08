@@ -8,16 +8,20 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using System.Configuration;
 using AquatrohrmsSite.Models;
+using System.Net.Mail;
+using System.Net;
 namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-    
+
         HRIMSConEntities db = new HRIMSConEntities();
-        
+        [HttpGet]
         public ActionResult AddEmployee()
         {            
      
+
+            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
            
             //----------------------- Department Binding entity -----------------------------//
             List<tblDepartment> deptList = (from data in db.tblDepartments
@@ -60,6 +64,13 @@ namespace AquatrohrmsSite.Controllers
                                          select data).ToList();
 
             tblEmployee objemp = new tblEmployee();
+            //objemp.intDepartmentID= new SelectList(,)
+            if (ModelState.IsValid)
+            {
+                db.tblLogins.Add(objtlogin);
+                db.tblEmployees.Add(objemp);
+                db.SaveChanges();
+            }
             objemp.varFirstName = "-- Select --";
             objemp.intEmployeeID = 0 ;
 
@@ -68,7 +79,6 @@ namespace AquatrohrmsSite.Controllers
             SelectList objEmployeeModel = new SelectList(empList, "intEmployeeID", "varFirstName", 0);
 
             objLogin.EmployeeModel = objEmployeeModel;
-
 
             //---------------------- End Employee Binding ------------------------------------//
 
@@ -84,7 +94,6 @@ namespace AquatrohrmsSite.Controllers
             return View(objLogin);  
 
             }
-
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
         {      
@@ -110,7 +119,7 @@ namespace AquatrohrmsSite.Controllers
         [HttpPost]
         public ActionResult AccountLogin(tblLogin objlogin)
         {
-            
+
             if (IsValid(objlogin.varLoginName, objlogin.varPassword))
             {
                 FormsAuthentication.SetAuthCookie(objlogin.varLoginName, false);
@@ -123,7 +132,7 @@ namespace AquatrohrmsSite.Controllers
                 //ModelState.AddModelError("", "Login details are wrong.");
             }
             return View(objlogin);
-            
+
         }
 
 
@@ -132,7 +141,7 @@ namespace AquatrohrmsSite.Controllers
         {
             var crypto = new SimpleCrypto.PBKDF2();
             bool IsValid = false;
-            using (  HRIMSConEntities db = new HRIMSConEntities())
+            using (HRIMSConEntities db = new HRIMSConEntities())
             {
                 var user = db.tblLogins.Where(x => x.varLoginName == username).FirstOrDefault();
                 if (user != null)
@@ -152,10 +161,12 @@ namespace AquatrohrmsSite.Controllers
             return View();
         }
 
+        public ActionResult ForgotPassword()
 
 
         public ActionResult Email()
         {
+
             return View();
         }
 
@@ -168,4 +179,7 @@ namespace AquatrohrmsSite.Controllers
         //    return Content("Success");
         //}
     }
-}
+
+   }
+
+      
