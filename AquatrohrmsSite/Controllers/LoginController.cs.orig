@@ -8,27 +8,42 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using System.Configuration;
 using AquatrohrmsSite.Models;
+using System.Net.Mail;
+using System.Net;
 namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-    
+
         HRIMSConEntities db = new HRIMSConEntities();
-        
+        [HttpGet]
         public ActionResult AddEmployee()
+<<<<<<< HEAD
         {            
-             //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
-            //ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+     
            
             //----------------------- Department Binding entity -----------------------------//
             List<tblDepartment> deptList = (from data in db.tblDepartments
                                             select data).ToList();
 
             tblDepartment objDept = new tblDepartment();
+=======
+        {
+            //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
+
+            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName");
+
+            //ViewBag.reportingto = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
+            //ViewBag.Acesscontrol = new SelectList(db.tblDesignations, "intAccessID", "varFirstName");
+            //ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName");
+            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
+>>>>>>> 38ed7ff516fb39737adbc0134499f1371e6274c0
 
             objDept.varDepartmentName = "-- Select --";
             objDept.intDepartmentID = 0;
 
+<<<<<<< HEAD
             deptList.Insert(0, objDept);
             SelectList objModelDept = new SelectList(deptList, "intDepartmentID", "varDepartmentName", 0);
             tblLogin objLogin = new tblLogin();
@@ -60,16 +75,32 @@ namespace AquatrohrmsSite.Controllers
             List<tblEmployee> empList = (from data in db.tblEmployees
                                          select data).ToList();
 
+=======
+        [HttpPost]
+        public ActionResult AddEmployee(tblLogin objtlogin)
+        {
+>>>>>>> 38ed7ff516fb39737adbc0134499f1371e6274c0
             tblEmployee objemp = new tblEmployee();
             objemp.varFirstName = "-- Select --";
             objemp.intEmployeeID = 0 ;
 
+<<<<<<< HEAD
             empList.Insert(0, objemp);
+=======
+            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
+            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName", objemp.intDesignationId);
+            //ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName", objemp.intReportingHead);
+            //ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName", objemp.varAccessLevel);
+            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
+            return View(objtlogin);
+        }
+>>>>>>> 38ed7ff516fb39737adbc0134499f1371e6274c0
 
             SelectList objEmployeeModel = new SelectList(empList, "intEmployeeID", "varFirstName", 0);
 
             objLogin.EmployeeModel = objEmployeeModel;
 
+<<<<<<< HEAD
 
             //---------------------- End Employee Binding ------------------------------------//
 
@@ -88,56 +119,31 @@ namespace AquatrohrmsSite.Controllers
 
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
-        {
-
-            //tblEmployee objemp = new tblEmployee();
-           // objemp.intDepartmentID= new SelectList(,)
-            if (ModelState.IsValid)
-            {
+        {      
                 db.tblLogins.Add(objtlogin);
-           //db.tblEmployees.Add(objemp);
                 db.SaveChanges();
-            return RedirectToAction("AddEmployee");
-            }
-
-            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
-            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName", objemp.intDesignationId);
-            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName",objemp.intReportingHead); 
-            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName",objemp.varAccessLevel);
-            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
-            return View(objtlogin);
+                     return RedirectToAction("AddEmployee");
+        
         }
 
-        public JsonResult CheckForDuplication(string EmailId)
-        {
-            var data = db.tblLogins.Where(p => p.varLoginName.Equals(EmailId, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+        //public JsonResult CheckForDuplication(string LoginName)
+        //{
+        //    return Json(!db.tblLogins.Any(p => p.varLoginName == LoginName), JsonRequestBehavior.AllowGet);
+        //}
 
-            if (data != null)
-            {
-                return Json("Sorry, this name already exists", JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-
-
-
-
-
+   
+=======
+>>>>>>> 38ed7ff516fb39737adbc0134499f1371e6274c0
         [HttpGet]
         public ActionResult AccountLogin()
         {
             return View();
         }
 
-
         [HttpPost]
         public ActionResult AccountLogin(tblLogin objlogin)
         {
-            
+
             if (IsValid(objlogin.varLoginName, objlogin.varPassword))
             {
                 FormsAuthentication.SetAuthCookie(objlogin.varLoginName, false);
@@ -150,16 +156,14 @@ namespace AquatrohrmsSite.Controllers
                 //ModelState.AddModelError("", "Login details are wrong.");
             }
             return View(objlogin);
-            
+
         }
-
-
 
         private bool IsValid(string username, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
             bool IsValid = false;
-            using (  HRIMSConEntities db = new HRIMSConEntities())
+            using (HRIMSConEntities db = new HRIMSConEntities())
             {
                 var user = db.tblLogins.Where(x => x.varLoginName == username).FirstOrDefault();
                 if (user != null)
@@ -173,26 +177,20 @@ namespace AquatrohrmsSite.Controllers
             return IsValid;
         }
 
-
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-
-
-        public ActionResult Email()
+        public ActionResult ForgotPassword()
         {
+
             return View();
         }
 
 
-        //public ActionResult SendMail(string Subject, string Body)
-        //{
-        //    Email oMail = new Email();
-        //    oMail.SendMail("Email", "xxxxx@xxxxxx.com", new String[] { Subject, Body });
-
-        //    return Content("Success");
-        //}
     }
-}
+
+   }
+
+      
