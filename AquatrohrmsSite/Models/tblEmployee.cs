@@ -11,7 +11,7 @@ namespace AquatrohrmsSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class tblEmployee
     {
@@ -32,12 +32,14 @@ namespace AquatrohrmsSite.Models
     
         public int intEmployeeID { get; set; }
 
-
+        [Required(ErrorMessage="First name is compulsory!!")]
         public string varFirstName { get; set; }
+         [Required(ErrorMessage = "Last name is compulsory!!")]
         public string varLastName { get; set; }
+         [Required(ErrorMessage = "Middle name is compulsory!!")]
         public string varMiddleName { get; set; }
         public Nullable<int> intEmpRoleID { get; set; }
-
+        [Required(ErrorMessage = "Designation is compulsory!!")]
         public Nullable<int> intDesignationId { get; set; }
         public string varCurrAddressLine1 { get; set; }
         public string varCurrAddressLine2 { get; set; }
@@ -46,13 +48,16 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intCurrCityID { get; set; }
         public string varCurrPostalCode { get; set; }
         public string varPhoneNo { get; set; }
+        [Required(ErrorMessage = "Status is compulsory!!")]
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> intLeaveBalance { get; set; }
         public string varGender { get; set; }
         public string charMarritalStatus { get; set; }
         public string varPANNo { get; set; }
         public string varWorkTelNo { get; set; }
+        [Required(ErrorMessage = "Reporting Head is compulsory!!")]
         public Nullable<int> intReportingHead { get; set; }
+        [Required(ErrorMessage = "Email Id is compulsory!!")]
         public string varOfficeEmailAdd { get; set; }
         public string varPersonalEmailAdd { get; set; }
         public string varFatherSpouceName { get; set; }
@@ -61,7 +66,8 @@ namespace AquatrohrmsSite.Models
         public string varEmergencyContactNumber { get; set; }
         public Nullable<int> intEmergencyContactRelationshipID { get; set; }
 
-
+       // [Required(ErrorMessage = "Department is compulsory!!")]
+        [Range(0, 100, ErrorMessage = "Department is compulsory!!")]
         public Nullable<int> intDepartmentID { get; set; }
         public string varPermAddressLine1 { get; set; }
         public string varPermAddressLine2 { get; set; }
@@ -69,9 +75,11 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intPermStateID { get; set; }
         public Nullable<int> intPermCityID { get; set; }
         public string varPermPostalCode { get; set; }
+        
         public string varAccessLevel { get; set; }
+        //public IEnumerable<string> varAccessLevel { get; set; }
 
-       
+       [Required(ErrorMessage = "Date of Joining is compulsory!!")]
         public Nullable<System.DateTime> varDOJ { get; set; }   
         public virtual ICollection<tblAllowancesManagement> tblAllowancesManagements { get; set; }
         public virtual tblCity tblCity { get; set; }

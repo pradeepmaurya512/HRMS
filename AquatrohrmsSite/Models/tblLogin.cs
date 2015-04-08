@@ -22,13 +22,12 @@ namespace AquatrohrmsSite.Models
     public partial class tblLogin
     {
         public int intLoginId { get; set; }
-
+        [Required(ErrorMessage = "User name is compulsory!!")]
         public string varUserName { get; set; }
-
         [DataType(DataType.Password)]
-        [DisplayName(" Password")]
+        [Required(ErrorMessage = "Password is compulsory!!")]
         public string varPassword { get; set; }
-
+        [Required(ErrorMessage = "Confirm Password is compulsory!!")]
         public string varConfirmPassword { get; set; }
 
         [NotMapped]
@@ -40,8 +39,9 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
 
-        [DisplayName("Email ID")]
+        //[DisplayName("Email ID")]
         [Remote("CheckForDuplication","Login")]
+        [Required(ErrorMessage = "Login name is compulsory!!")]
         public string varLoginName { get; set; }
 
         public Nullable<System.DateTime> dtCreatedOn { get; set; }
@@ -55,6 +55,10 @@ namespace AquatrohrmsSite.Models
         public SelectList DepartmentModel { get; set; }
         public SelectList DesignationModel { get; set; }
         public SelectList EmployeeModel { get; set; }
-        public SelectList AccessList { get; set; }
+        //public SelectList AccessList { get; set; }
+        //public IEnumerable<SelectListItem> AccessList { get; set; }
+        public int[] AccessId { get; set; }
+        public MultiSelectList AccessList { get; set; }
+        
     }       
 }

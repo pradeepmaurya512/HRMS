@@ -81,11 +81,20 @@ namespace AquatrohrmsSite.Controllers
             return View(objLogin);  
             }
         [HttpPost]
-        public ActionResult AddEmployee(tblLogin objtlogin)
-        {            
+        public ActionResult AddEmployee(tblLogin objtlogin, int[] AccessId)
+        {
+            
+            try{
+                string accesslevels = string.Join(",", AccessId);
+                objtlogin.tblEmployee.varAccessLevel = accesslevels;
                 db.tblLogins.Add(objtlogin);
-                db.SaveChanges();           
-  
+                db.SaveChanges();                
+                ViewBag.Message = "Data has been submitted successfully!!.";           
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Data not saved,Please re-enter the data!!";
+            }                       
             return RedirectToAction("AddEmployee");
         }
 
