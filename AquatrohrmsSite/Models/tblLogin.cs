@@ -25,14 +25,14 @@ namespace AquatrohrmsSite.Models
 
         public string varUserName { get; set; }
 
-        [DataType(DataType.Password)]
-        [DisplayName(" Password")]
+        //[DataType(DataType.Password)]
+        //[DisplayName(" Password")]
         public string varPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("varPassword", ErrorMessage = "Passwords must match")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        [DisplayName("Confirm Password")]
+        //[System.ComponentModel.DataAnnotations.Compare("varPassword", ErrorMessage = "Passwords must match")]
+        //[Required(ErrorMessage = "Confirm password is required")]
+        //[DisplayName("Confirm Password")]
         public string varConfirmPassword { get; set; }
 
         [NotMapped]
@@ -44,8 +44,9 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intEmployeeID { get; set; }
         public Nullable<int> IsChkLoginCount { get; set; }
 
-         [DisplayName("Email ID")]
-         [Remote("CheckForDuplication","Login")]
+         //[DisplayName("Email ID")]
+
+         //[Remote("CheckForDuplication", "Login", ErrorMessage = "This {0} is already used.")]
         public string varLoginName { get; set; }
 
 

@@ -17,8 +17,7 @@ namespace AquatrohrmsSite.Controllers
         
         public ActionResult AddEmployee()
         {            
-             //ViewBag.Departments = (db.tblDepartments.Select(x => new { x.intDepartmentID, x.varDepartmentName })).ToList();
-            //ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName");
+     
            
             //----------------------- Department Binding entity -----------------------------//
             List<tblDepartment> deptList = (from data in db.tblDepartments
@@ -88,45 +87,19 @@ namespace AquatrohrmsSite.Controllers
 
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
-        {
-
-            //tblEmployee objemp = new tblEmployee();
-           // objemp.intDepartmentID= new SelectList(,)
-            if (ModelState.IsValid)
-            {
+        {      
                 db.tblLogins.Add(objtlogin);
-           //db.tblEmployees.Add(objemp);
                 db.SaveChanges();
-            return RedirectToAction("AddEmployee");
-            }
-
-            ViewBag.departs = new SelectList(db.tblDepartments, "intDepartmentID", "varDepartmentName", objemp.intDepartmentID);
-            ViewBag.designation = new SelectList(db.tblDesignations, "intDesignationID", "varDesignationName", objemp.intDesignationId);
-            ViewBag.reportingto = new SelectList(db.tblDesignations, "intEmpRoleID", "varDesignationName",objemp.intReportingHead); 
-            ViewBag.accessID = new SelectList(db.tblAccesses, "intAccessID", "varAccessName",objemp.varAccessLevel);
-            ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName", objemp.intEmployeeID);
-            return View(objtlogin);
+                     return RedirectToAction("AddEmployee");
+        
         }
 
-        public JsonResult CheckForDuplication(string EmailId)
-        {
-            var data = db.tblLogins.Where(p => p.varLoginName.Equals(EmailId, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+        //public JsonResult CheckForDuplication(string LoginName)
+        //{
+        //    return Json(!db.tblLogins.Any(p => p.varLoginName == LoginName), JsonRequestBehavior.AllowGet);
+        //}
 
-            if (data != null)
-            {
-                return Json("Sorry, this name already exists", JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-
-
-
-
-
+   
         [HttpGet]
         public ActionResult AccountLogin()
         {

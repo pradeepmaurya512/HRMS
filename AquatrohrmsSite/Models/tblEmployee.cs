@@ -38,7 +38,6 @@ namespace AquatrohrmsSite.Models
         public string varMiddleName { get; set; }
         public Nullable<int> intEmpRoleID { get; set; }
 
-        [DisplayName("Designation")]
         public Nullable<int> intDesignationId { get; set; }
         public string varCurrAddressLine1 { get; set; }
         public string varCurrAddressLine2 { get; set; }
@@ -61,7 +60,7 @@ namespace AquatrohrmsSite.Models
         public string varEmergencyContactName { get; set; }
         public string varEmergencyContactNumber { get; set; }
         public Nullable<int> intEmergencyContactRelationshipID { get; set; }
-        [DisplayName("Department")]
+   
         public Nullable<int> intDepartmentID { get; set; }
         public string varPermAddressLine1 { get; set; }
         public string varPermAddressLine2 { get; set; }
@@ -70,7 +69,7 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intPermCityID { get; set; }
         public string varPermPostalCode { get; set; }
         public string varAccessLevel { get; set; }
-         [DisplayName("Date Of Birth")]
+
         public Nullable<System.DateTime> varDOJ { get; set; }   
         public virtual ICollection<tblAllowancesManagement> tblAllowancesManagements { get; set; }
         public virtual tblCity tblCity { get; set; }

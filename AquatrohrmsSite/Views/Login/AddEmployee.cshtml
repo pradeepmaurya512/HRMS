@@ -39,7 +39,7 @@
             <td style="width:100px">Email ID</td>
             <td>
                 @Html.TextBoxFor(model => model.tblEmployee.varOfficeEmailAdd, new { style = "width: 200px; font-family: 'Book Antiqua'; font-size: 13px", @Placeholder = "abc@a4technology.com", id = "txtLoginName" })<span style="color:red"><b> * </b></span>
-                @Html.ValidationMessageFor(model => model.varLoginName)
+                @Html.ValidationMessageFor(model => model.varUserName)
             </td>
         </tr>
         <tr>
@@ -53,7 +53,7 @@
         <tr>
             <td style="width:100px">Designation</td>
             <td>
-                @Html.DropDownList("ddlDesignation", @Model.DesignationModel, new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlDesignation" })<span style="color:red"><b> * </b></span>
+                @Html.DropDownListFor(model=>model.tblEmployee.intDesignationId, @Model.DesignationModel, new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlDesignation" })<span style="color:red"><b> * </b></span>
                 @Html.ValidationMessageFor(model => model.tblEmployee.intDesignationId)
             </td>
         </tr>
@@ -85,7 +85,7 @@
         </tr>
         <tr>
             <td style="width:150px">Reporting Head</td>
-            <td>@Html.DropDownList("ddlEmployee", @Model.EmployeeModel,new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlReportingHead" })<span style="color:red"><b> * </b></span></td>
+            <td>@Html.DropDownListFor(model=>model.tblEmployee.intEmployeeID, @Model.EmployeeModel,new { style = "width: 213px;height: 25px;font-family: 'Book Antiqua'; font-size: 13px", id = "ddlReportingHead" })<span style="color:red"><b> * </b></span></td>
         </tr>
         <tr>
             <td style="width:150px">Access Levels</td>            
