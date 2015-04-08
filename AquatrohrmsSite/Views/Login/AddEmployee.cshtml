@@ -112,7 +112,7 @@
         <tr>
             <td style="width:150px">Status</td>
             <td>
-               @Html.RadioButtonFor(model => model.tblEmployee.IsActive, "Active", true) Active @Html.RadioButtonFor(model => model.tblEmployee.IsActive, "InActive", false) InActive
+               @Html.RadioButtonFor(model => model.tblEmployee.IsActive, 1, true) Active @Html.RadioButtonFor(model => model.tblEmployee.IsActive, 0, false) InActive
             </td>
         </tr>
         <tr>

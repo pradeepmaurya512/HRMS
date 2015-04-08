@@ -8,21 +8,15 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using System.Configuration;
 using AquatrohrmsSite.Models;
-using System.Net.Mail;
-using System.Net;
 namespace AquatrohrmsSite.Controllers
 {
     public class LoginController : Controller
     {
-
+    
         HRIMSConEntities db = new HRIMSConEntities();
-        [HttpGet]
+        
         public ActionResult AddEmployee()
-        {            
-     
-
-            //ViewBag.employeelist = new SelectList(db.tblEmployees, "intEmployeeID", "varFirstName");
-           
+        {                                    
             //----------------------- Department Binding entity -----------------------------//
             List<tblDepartment> deptList = (from data in db.tblDepartments
                                             select data).ToList();
@@ -64,13 +58,6 @@ namespace AquatrohrmsSite.Controllers
                                          select data).ToList();
 
             tblEmployee objemp = new tblEmployee();
-            //objemp.intDepartmentID= new SelectList(,)
-            if (ModelState.IsValid)
-            {
-                db.tblLogins.Add(objtlogin);
-                db.tblEmployees.Add(objemp);
-                db.SaveChanges();
-            }
             objemp.varFirstName = "-- Select --";
             objemp.intEmployeeID = 0 ;
 
@@ -92,34 +79,39 @@ namespace AquatrohrmsSite.Controllers
             //---------------------- End Access Binding ------------------------------------//
          
             return View(objLogin);  
-
             }
         [HttpPost]
         public ActionResult AddEmployee(tblLogin objtlogin)
-        {      
+        {            
                 db.tblLogins.Add(objtlogin);
-                db.SaveChanges();
-                     return RedirectToAction("AddEmployee");
-        
+                db.SaveChanges();           
+  
+            return RedirectToAction("AddEmployee");
         }
 
-        //public JsonResult CheckForDuplication(string LoginName)
-        //{
-        //    return Json(!db.tblLogins.Any(p => p.varLoginName == LoginName), JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult CheckForDuplication(string EmailId)
+        {
+            var data = db.tblLogins.Where(p => p.varLoginName.Equals(EmailId, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
 
-   
+            if (data != null)
+            {
+                return Json("Sorry, this name already exists", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         public ActionResult AccountLogin()
         {
             return View();
         }
-
-
         [HttpPost]
         public ActionResult AccountLogin(tblLogin objlogin)
         {
-
+            
             if (IsValid(objlogin.varLoginName, objlogin.varPassword))
             {
                 FormsAuthentication.SetAuthCookie(objlogin.varLoginName, false);
@@ -131,17 +123,13 @@ namespace AquatrohrmsSite.Controllers
                 return RedirectToAction("AddEmployee", "Login");
                 //ModelState.AddModelError("", "Login details are wrong.");
             }
-            return View(objlogin);
-
+            return View(objlogin);            
         }
-
-
-
         private bool IsValid(string username, string password)
         {
             var crypto = new SimpleCrypto.PBKDF2();
             bool IsValid = false;
-            using (HRIMSConEntities db = new HRIMSConEntities())
+            using (  HRIMSConEntities db = new HRIMSConEntities())
             {
                 var user = db.tblLogins.Where(x => x.varLoginName == username).FirstOrDefault();
                 if (user != null)
@@ -154,23 +142,14 @@ namespace AquatrohrmsSite.Controllers
             }
             return IsValid;
         }
-
-
         public ActionResult ChangePassword()
         {
             return View();
         }
-
-        public ActionResult ForgotPassword()
-
-
         public ActionResult Email()
         {
-
             return View();
         }
-
-
         //public ActionResult SendMail(string Subject, string Body)
         //{
         //    Email oMail = new Email();
@@ -179,7 +158,4 @@ namespace AquatrohrmsSite.Controllers
         //    return Content("Success");
         //}
     }
-
-   }
-
-      
+}
