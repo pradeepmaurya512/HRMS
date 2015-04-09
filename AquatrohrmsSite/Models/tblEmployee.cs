@@ -39,7 +39,8 @@ namespace AquatrohrmsSite.Models
          [Required(ErrorMessage = "Middle name is compulsory!!")]
         public string varMiddleName { get; set; }
         public Nullable<int> intEmpRoleID { get; set; }
-        [Required(ErrorMessage = "Designation is compulsory!!")]
+        [Range(0,0,ErrorMessage="Designation is compulsory!!")]
+        //[Required(ErrorMessage = "Designation is compulsory!!")]
         public Nullable<int> intDesignationId { get; set; }
         public string varCurrAddressLine1 { get; set; }
         public string varCurrAddressLine2 { get; set; }
@@ -56,7 +57,7 @@ namespace AquatrohrmsSite.Models
         public string varPANNo { get; set; }
         public string varWorkTelNo { get; set; }
         [Required(ErrorMessage = "Reporting Head is compulsory!!")]
-        public Nullable<int> intReportingHead { get; set; }
+        public Nullable<int> intReportingHead { get; set; }        
         [Required(ErrorMessage = "Email Id is compulsory!!")]
         public string varOfficeEmailAdd { get; set; }
         public string varPersonalEmailAdd { get; set; }
@@ -67,7 +68,7 @@ namespace AquatrohrmsSite.Models
         public Nullable<int> intEmergencyContactRelationshipID { get; set; }
 
        // [Required(ErrorMessage = "Department is compulsory!!")]
-        [Range(0, 100, ErrorMessage = "Department is compulsory!!")]
+        
         public Nullable<int> intDepartmentID { get; set; }
         public string varPermAddressLine1 { get; set; }
         public string varPermAddressLine2 { get; set; }
